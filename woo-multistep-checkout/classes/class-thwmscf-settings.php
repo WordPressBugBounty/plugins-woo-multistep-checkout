@@ -55,6 +55,7 @@ class THWMSCF_Settings {
 
 		add_filter('thwmscf_steps_front_end', array($this, 'thwmsc_make_order_review_on_right'), 10);
 		add_action('thwmscf_multi_step_tab_panels', array($this, 'add_review_order_on_right_side'), 25);
+        add_action('thwmscf_multi_step_after_tab_panels', array($this, 'render_buttons_after_tab_panels'), 10);
 
 		add_action('admin_footer', array($this, 'admin_notice_js_snippet'), 9999);
 		add_action('wp_ajax_hide_thwmscf_admin_notice', array($this, 'hide_thwmscf_admin_notice'));
@@ -2117,6 +2118,27 @@ class THWMSCF_Settings {
     public function render_form_field_blank($colspan = 3){
         ?>
         <td width="<?php echo $colspan * 33.3 ?>%" colspan="<?php echo $colspan; ?>">&nbsp;</td>  
+        <?php
+    }
+
+    public function render_buttons_after_tab_panels(){
+        $thwmscf_settings = get_option('THWMSC_SETTINGS');
+        $button_prev_text = !empty($thwmscf_settings['button_prev_text']) ? wptexturize($thwmscf_settings['button_prev_text']) : "Previous";
+        $button_next_text = !empty($thwmscf_settings['button_next_text']) ? wptexturize($thwmscf_settings['button_next_text']) : "Next";
+        $back_to_cart_button = isset($thwmscf_settings['back_to_cart_button']) && $thwmscf_settings['back_to_cart_button'] ? wptexturize($thwmscf_settings['back_to_cart_button']) : '';
+        $back_to_cart_button_text = isset($thwmscf_settings['back_to_cart_button_text']) && $thwmscf_settings['back_to_cart_button_text'] ? wptexturize($thwmscf_settings['back_to_cart_button_text']) : 'Back to cart';
+
+        ?>
+        <div class="thwmscf-buttons">
+            <input type="button" class="button-prev action-prev" value="<?php echo esc_attr(__( $button_prev_text, 'woo-multistep-checkout' )); ?>">
+            <input type="button" class="button-next action-next" value="<?php echo esc_attr(__( $button_next_text, 'woo-multistep-checkout' )); ?>">
+            <?php 
+            if($back_to_cart_button == 'yes'){
+                ?>
+                <a class="button thwmscf-cart-url" href="<?php echo esc_url(wc_get_cart_url()); ?>"><?php echo wp_kses_post(__( $back_to_cart_button_text, 'woo-multistep-checkout' )); ?></a>
+                <?php
+            } ?>
+        </div>
         <?php
     }
 }

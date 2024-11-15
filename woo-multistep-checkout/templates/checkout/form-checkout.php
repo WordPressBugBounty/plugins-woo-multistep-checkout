@@ -189,6 +189,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				</a>
 				<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-0">
 					<?php do_action( 'thwmscf_before_checkout_form' ); ?>
+					<?php do_action( 'thwmscf_multi_step_after_tab_panels' ); ?>
 				</div>
 			</div>
 			<?php 
@@ -223,6 +224,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 								</div>
 								<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 							<?php } ?>
+							<?php do_action( 'thwmscf_multi_step_after_tab_panels' ); ?>
 
 						</div>
 					</div>
@@ -245,6 +247,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 								</div>
 
 								<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+								<?php do_action( 'thwmscf_multi_step_after_tab_panels' ); ?>
 							</div>
 						</div>
 						<?php $step_number++; ?>
@@ -283,6 +286,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						</div> -->
 
 						<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+						<?php do_action( 'thwmscf_multi_step_after_tab_panels' ); ?>
 
 					</div>
 				</div>
@@ -302,6 +306,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 						<?php do_action( 'thwmscf_woocommerce_checkout_review_order' ); ?>
 						<?php //do_action( 'woocommerce_checkout_after_order_review' ); ?>
+						<?php do_action( 'thwmscf_multi_step_after_tab_panels' ); ?>
 					</div>
 				</div>
 
@@ -323,6 +328,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						<?php remove_action( 'woocommerce_checkout_order_review', 'woocommerce_order_review', 10 ); ?>
 						<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 						<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+						<?php do_action( 'thwmscf_multi_step_after_tab_panels' ); ?>
 					</div>
 				</div>
 			<?php } ?>
@@ -335,16 +341,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		</form>
 	</div>
-	<div class="thwmscf-buttons">
-		<input type="button" id="action-prev" class="button-prev" value="<?php echo esc_attr(__( $button_prev_text, 'woo-multistep-checkout' )); ?>">
-		<input type="button" id="action-next" class="button-next" value="<?php echo esc_attr(__( $button_next_text, 'woo-multistep-checkout' )); ?>">
-		<?php 
-		if($back_to_cart_button == 'yes'){
-			?>
-			<a class="button thwmscf-cart-url" href="<?php echo esc_url(wc_get_cart_url()); ?>"><?php echo wp_kses_post(__( $back_to_cart_button_text, 'woo-multistep-checkout' )); ?></a>
-			<?php
-		} ?>
-	</div>
+	
 </div>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
