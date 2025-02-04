@@ -2,15 +2,14 @@
 /**
  * Plugin Name: MultiStep Checkout for WooCommerce
  * Description: MultiStep Checkout for WooCommerce plugin breaks up the usual WooCommerce checkout form into multiple steps for a friendlier user experience.
- * Version:     2.2.9
+ * Version:     2.3.0
  * Author:      ThemeHigh
  * Author URI:  https://www.themehigh.com
- *
  * Text Domain: woo-multistep-checkout
  * Domain Path: /languages
- *
  * WC requires at least: 5.0
- * WC tested up to: 9.4
+ * WC tested up to: 9.6
+ * Requires Plugins: woocommerce
 */
 
 if(!defined( 'ABSPATH' )) exit;
@@ -37,7 +36,7 @@ if(is_woocommerce_active()) {
 			public function init() {		
 				$this->load_plugin_textdomain();
 
-				define('THWMSCF_VERSION', '2.2.9');
+				define('THWMSCF_VERSION', '2.3.0');
 				!defined('THWMSCF_BASE_NAME') && define('THWMSCF_BASE_NAME', plugin_basename( __FILE__ ));
 				!defined('THWMSCF_PATH') && define('THWMSCF_PATH', plugin_dir_path( __FILE__ ));
 				!defined('THWMSCF_URL') && define('THWMSCF_URL', plugins_url( '/', __FILE__ ));
@@ -71,7 +70,7 @@ if(is_woocommerce_active()) {
 				$now = time();
 
 				// $render_time = apply_filters('thwmscf_show_discount_popup_render_time' , 3 * MONTH_IN_SECONDS);
-				$render_time  = apply_filters('thwmscf_show_discount_popup_render_time', 4 * MONTH_IN_SECONDS);
+				$render_time  = apply_filters('thwmscf_show_discount_popup_render_time', 1 * MONTH_IN_SECONDS);
 				$render_time = $thwmscf_since + $render_time;
 				
 				if (isset($_GET['thwmscf_discount_popup_dismiss'])) {

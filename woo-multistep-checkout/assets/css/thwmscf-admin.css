@@ -101,6 +101,9 @@ td.sort::before {
     border-color: #d43f3a;
 }
 /* New admin CSS*/
+.thwmscf_layout_wrap {
+    display: flex !important;
+}
 .thwmscf_layout_wrap label {
     position: relative;
     width: 140px;
