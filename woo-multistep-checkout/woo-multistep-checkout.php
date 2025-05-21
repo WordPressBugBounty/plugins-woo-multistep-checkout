@@ -2,13 +2,13 @@
 /**
  * Plugin Name: MultiStep Checkout for WooCommerce
  * Description: MultiStep Checkout for WooCommerce plugin breaks up the usual WooCommerce checkout form into multiple steps for a friendlier user experience.
- * Version:     2.3.0
+ * Version:     2.3.1
  * Author:      ThemeHigh
  * Author URI:  https://www.themehigh.com
  * Text Domain: woo-multistep-checkout
  * Domain Path: /languages
  * WC requires at least: 5.0
- * WC tested up to: 9.6
+ * WC tested up to: 9.8
  * Requires Plugins: woocommerce
 */
 
@@ -36,7 +36,7 @@ if(is_woocommerce_active()) {
 			public function init() {		
 				$this->load_plugin_textdomain();
 
-				define('THWMSCF_VERSION', '2.3.0');
+				define('THWMSCF_VERSION', '2.3.1');
 				!defined('THWMSCF_BASE_NAME') && define('THWMSCF_BASE_NAME', plugin_basename( __FILE__ ));
 				!defined('THWMSCF_PATH') && define('THWMSCF_PATH', plugin_dir_path( __FILE__ ));
 				!defined('THWMSCF_URL') && define('THWMSCF_URL', plugins_url( '/', __FILE__ ));

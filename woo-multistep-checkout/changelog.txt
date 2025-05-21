@@ -1,4 +1,8 @@
 == Changelog ==
+= 2.3.1 =
+* Added WooCommerce 9.8 compatibility.
+* Added WordPress 6.8 compatibility.
+
 = 2.3.0 =
 * Added WooCommerce 9.6 compatibility.
 

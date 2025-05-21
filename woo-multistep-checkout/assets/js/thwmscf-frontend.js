@@ -82,6 +82,14 @@
 	}
 
 	function validate_checkout_step(active_step, next_step){
+		if(thwmscf_script_var.validation_type == 'ajax'){
+			validate_checkout_step_ajax(active_step, next_step);
+		} else {
+			validate_checkout_step_js(active_step, next_step);
+		}	
+	}
+
+	function validate_checkout_step_js(active_step, next_step){
 		var valid = validate_step_fields(active_step);
 
 		if(valid){
@@ -92,7 +100,51 @@
 		}else{
 			display_error_message();
 			scrol_to_error();
-		}		
+		}	
+	}
+
+	function validate_checkout_step_ajax(active_step, next_step){
+		var posted = {};
+		clear_validation_error();
+		var active_section = $('#thwmscf-tab-panel-'+active_step);
+
+		if(active_section){
+			var all_inputs = active_section.find(":input").not('.thwcfe-disabled-field, .woocommerce-validated,:hidden');
+			$.each(
+				all_inputs,
+				function(field){
+					var type  = $( this ).getType();
+					var name  = $( this ).attr( 'name' );
+					var value = get_field_value( type, $( this ), name );
+
+					if ((($( this ).data( 'multiple' ) == 1) && type == 'checkbox') || (($( this ).prop( 'multiple' )) && type == 'select')) {
+						name = name.replace( '[]',"" );
+					}
+					posted[name] = value;
+				}
+			);
+			var data = {
+	        	action: 'thwmscf_step_validation',
+	        	posted: posted,
+	        	nonce: thwmscf_script_var.ajax_nonce,
+	        };
+	        $.ajax({
+	        	type: 'POST',
+	        	url: thwmscf_script_var.ajax_url,
+	        	data: data,
+	        	success: function( response ) {
+	        		if(response.result === 'failure'){
+						display_error( response );
+						scrol_to_error();
+					} else {
+						tabs.find('#step-'+active_step).addClass('thwmscf-finished-step');
+
+						jump_to_step(next_step, false);	
+						scroll_to_top();
+					}
+				}
+			});
+	    }
 	}
 
 	function clear_coupon_value(){
@@ -283,6 +335,34 @@
 		$('html, body').animate({
 			scrollTop: tabs_wrapper.offset().top-100
 		},800);	
+	}
+
+	function display_error(error){
+		display_global_error( error.messages, error.type );
+	}
+
+	function display_global_error(error, type){
+		var error_div = $( '.woocommerce-error' );
+
+		if ((type != undefined) && type === 'custom') {
+			error          = error.split( '|' );
+			var error_html = '';
+			error.forEach(
+				function(element) {
+					error_html = error_html + '<li>' + element + '</li>'
+				}
+			);
+		}
+
+		if (error_div.length > 0) {
+			error_div.append( error_html );
+		} else if (type === 'custom') {
+			// checkout_form.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error + '</div>' );
+			error = '<ul class="woocommerce-error" role="alert">' + error_html + '</ul>';
+			tab_panels.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error + '</div>' );
+		} else {
+			tab_panels.prepend( '<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' + error + '</div>' );
+		}
 	}
 	
 	/*----- INIT -----*/
