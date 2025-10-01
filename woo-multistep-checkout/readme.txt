@@ -5,7 +5,7 @@ Tags: Multi-step Checkout, Multistep Checkout, WooCommerce Multi-step Checkout, 
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 
 MultiStep Checkout for WooCommerce Split up your WooCommerce Checkout form easily into simpler steps.
@@ -188,6 +188,5 @@ Go to Woocommerce > MultiStep Checkout and enable MultiStep Checkout. You can no
 
 == Changelog ==
 
-= 2.3.1 =
-* Added WooCommerce 9.8 compatibility.
-* Added WordPress 6.8 compatibility.
+= 2.3.2 =
+* Added WooCommerce 10.2 compatibility.
