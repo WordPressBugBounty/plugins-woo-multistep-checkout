@@ -162,17 +162,17 @@ class THWMSCF_Settings {
                         <div class="modal-body">
                             <div class="model-header">
                                 <img class="th-logo" src="<?php echo esc_url(THWMSCF_URL .'assets/images/themehigh.svg'); ?>" alt="themehigh-logo">
-                                <span><?php echo __('Quick Feedback', 'woo-multistep-checkout'); ?></span>
+                                <span><?php echo esc_html__('Quick Feedback', 'woo-multistep-checkout'); ?></span>
                             </div>
 
                             <!-- <div class="get-support-version-b">
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                                <a class="thwmscf-link thwmscf-right-link thwmscf-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new"><?php echo __('Get Support', 'woo-multistep-checkout'); ?></a>
+                                <a class="thwmscf-link thwmscf-right-link thwmscf-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new"><?php echo esc_html__('Get Support', 'woo-multistep-checkout'); ?></a>
                             </div> -->
 
                             <main class="form-container main-full">
-                                <p class="thwmscf-title-text"><?php echo __('If you have a moment, please let us know why you want to deactivate this plugin', 'woo-multistep-checkout'); ?></p>
-                                <ul class="deactivation-reason" data-nonce="<?php echo wp_create_nonce('thwmscf_deactivate_nonce'); ?>">
+                                <p class="thwmscf-title-text"><?php echo esc_html__('If you have a moment, please let us know why you want to deactivate this plugin', 'woo-multistep-checkout'); ?></p>
+                                <ul class="deactivation-reason" data-nonce="<?php echo esc_attr(wp_create_nonce('thwmscf_deactivate_nonce') ); ?>">
                                     <?php 
                                     if($deactivation_reasons){
                                         foreach($deactivation_reasons as $key => $reason){
@@ -190,16 +190,16 @@ class THWMSCF_Settings {
                                     }
                                     ?>
                                 </ul>
-                                <p class="thwmscf-privacy-cnt"><?php echo __('This form is only for getting your valuable feedback. We do not collect your personal data. To know more read our ', 'woo-multistep-checkout'); ?> <a class="thwmscf-privacy-link" target="_blank" href="<?php echo esc_url('https://www.themehigh.com/privacy-policy/');?>"><?php echo __('Privacy Policy', 'woo-multistep-checkout'); ?></a></p>
+                                <p class="thwmscf-privacy-cnt"><?php echo esc_html__('This form is only for getting your valuable feedback. We do not collect your personal data. To know more read our ', 'woo-multistep-checkout'); ?> <a class="thwmscf-privacy-link" target="_blank" href="<?php echo esc_url('https://www.themehigh.com/privacy-policy/');?>"><?php echo esc_html__('Privacy Policy', 'woo-multistep-checkout'); ?></a></p>
                             </main>
                             <footer class="modal-footer">
                                 <div class="thwmscf-left">
-                                    <a class="thwmscf-link thwmscf-left-link thwmscf-deactivate" href="#"><?php echo __('Skip & Deactivate', 'woo-multistep-checkout'); ?></a>
+                                    <a class="thwmscf-link thwmscf-left-link thwmscf-deactivate" href="#"><?php echo esc_html__('Skip & Deactivate', 'woo-multistep-checkout'); ?></a>
                                 </div>
                                 <div class="thwmscf-right">
-                                    <a class="thwmscf-link thwmscf-right-link thwmscf-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new"><?php echo __('Get Support', 'woo-multistep-checkout'); ?></a>
-                                    <a class="thwmscf-link thwmscf-right-link thwmscf-active thwmscf-submit-deactivate" href="#"><?php echo __('Submit and Deactivate', 'woo-multistep-checkout'); ?></a>
-                                    <a class="thwmscf-link thwmscf-right-link thwmscf-close" href="#"><?php echo __('Cancel', 'woo-multistep-checkout'); ?></a>
+                                    <a class="thwmscf-link thwmscf-right-link thwmscf-active" target="_blank" href="https://help.themehigh.com/hc/en-us/requests/new"><?php echo esc_html__('Get Support', 'woo-multistep-checkout'); ?></a>
+                                    <a class="thwmscf-link thwmscf-right-link thwmscf-active thwmscf-submit-deactivate" href="#"><?php echo esc_html__('Submit and Deactivate', 'woo-multistep-checkout'); ?></a>
+                                    <a class="thwmscf-link thwmscf-right-link thwmscf-close" href="#"><?php echo esc_html__('Cancel', 'woo-multistep-checkout'); ?></a>
                                 </div>
                             </footer>
                         </div>
@@ -400,23 +400,23 @@ class THWMSCF_Settings {
                         reason_input += '<input type="checkbox" id="th-snooze" name="th-snooze" class="th-snooze-checkbox">';
                         reason_input += '<label for="th-snooze">Snooze this panel while troubleshooting</label>';
                         reason_input += '<select name="th-snooze-time" class="th-snooze-select" disabled>';
-                        reason_input += '<option value="<?php echo HOUR_IN_SECONDS ?>">1 Hour</option>';
-                        reason_input += '<option value="<?php echo 12*HOUR_IN_SECONDS ?>">12 Hour</option>';
-                        reason_input += '<option value="<?php echo DAY_IN_SECONDS ?>">24 Hour</option>';
-                        reason_input += '<option value="<?php echo WEEK_IN_SECONDS ?>">1 Week</option>';
-                        reason_input += '<option value="<?php echo MONTH_IN_SECONDS ?>">1 Month</option>';
+                        reason_input += '<option value="<?php echo esc_attr(HOUR_IN_SECONDS) ?>">1 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(12*HOUR_IN_SECONDS) ?>">12 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(DAY_IN_SECONDS) ?>">24 Hour</option>';
+                        reason_input += '<option value="<?php echo esc_attr(WEEK_IN_SECONDS) ?>">1 Week</option>';
+                        reason_input += '<option value="<?php echo esc_attr(MONTH_IN_SECONDS) ?>">1 Month</option>';
                         reason_input += '</select>';
                         reason_input += '</div>';
                     }else if('reviewlink' == type){
                     	reason_input += '<div class="reason-input wmsc-review-link">';
                     	/*
-                    	reason_input += '<?php _e('Deactivate and ', 'woo-multistep-checkout');?>'
+                    	reason_input += '<?php esc_html_e('Deactivate and ', 'woo-multistep-checkout');?>'
                     	reason_input += '<a href="#" target="_blank" class="thwmsc-review-and-deactivate">';
-                    	reason_input += '<?php _e('leave a review', 'woo-multistep-checkout'); ?>';
+                    	reason_input += '<?php esc_html_e('leave a review', 'woo-multistep-checkout'); ?>';
                     	reason_input += '<span class="wmscf-rating-link"> &#9733;&#9733;&#9733;&#9733;&#9733; </span>';
                     	reason_input += '</a>';
                     	*/
-                    	reason_input += '<input type="hidden" value="<?php _e('Upgraded', 'woo-multistep-checkout');?>">';
+                    	reason_input += '<input type="hidden" value="<?php esc_html_e('Upgraded', 'woo-multistep-checkout');?>">';
                     	reason_input += '</div>';
                     }
 
@@ -806,7 +806,7 @@ class THWMSCF_Settings {
 		echo '<h2 class="nav-tab-wrapper woo-nav-tab-wrapper thwmscf-admin-tab-wrapper">';
 		foreach( $tabs as $key => $value ) {
 			$active = ( $key == $tab ) ? 'nav-tab-active' : '';
-			echo '<a class="nav-tab thwmscf-admin-tab '.$active.'" href="'. esc_url(admin_url('admin.php?page=woo_multistep_checkout&tab='.$key)) .'"><span class="thwmscf-tab-icon thwmscf-icon-'.$key.'"></span><label>'.$value.'</label></a>';
+			echo '<a class="nav-tab thwmscf-admin-tab '.esc_attr( $active ).'" href="'. esc_url(admin_url('admin.php?page=woo_multistep_checkout&tab='.$key)) .'"><span class="thwmscf-tab-icon thwmscf-icon-'.esc_attr( $key ).'"></span><label>'.esc_html( $value ).'</label></a>';
 		}
 		echo '</h2>';
 		
@@ -1201,7 +1201,7 @@ class THWMSCF_Settings {
                             $this->render_form_field_element($fields['thwmscf_layout'], $this->cell_props_L);
                             ?>
                         </tr>
-                        <tr class="display-tab-position" style="<?php echo $tab_style; ?>;">
+                        <tr class="display-tab-position" style="<?php echo esc_attr( $tab_style ); ?>;">
                             <?php
                             $cell_props = $this->cell_props_L;
                             // $cell_props['input_width'] = '182px';
@@ -1261,7 +1261,7 @@ class THWMSCF_Settings {
 							$this->render_form_field_blank(1);
 							?>
 						</tr>
-						<tr id="th-show-review-right" class="<?php echo $order_review_blur_class ?>">
+						<tr id="th-show-review-right" class="<?php echo esc_attr( $order_review_blur_class ); ?>">
 							<?php          
 							$this->render_form_field_element($fields['show_order_review_right'], $this->cell_props_L);
 							$this->render_form_field_blank(1);
@@ -1311,7 +1311,7 @@ class THWMSCF_Settings {
 							$this->render_form_field_blank(1);
 							?>
 						</tr>
-						<tr class="back-to-cart-show" style="<?php echo $cart_text_display; ?>">
+						<tr class="back-to-cart-show" style="<?php echo esc_attr( $cart_text_display ); ?>">
 							<?php          
 							$this->render_form_field_element($fields['back_to_cart_button_text'], $this->cell_props_L);
 							$this->render_form_field_blank(2);
@@ -1431,18 +1431,18 @@ class THWMSCF_Settings {
 				
 		$result = $this->update_settings($settings);
 		if ($result == true) {
-			echo '<div class="updated thwmscf-update-msg"><p>'. __('Your changes were saved.', 'woo-multistep-checkout') .'</p></div>';
+			echo '<div class="updated thwmscf-update-msg"><p>'. esc_html__('Your changes were saved.', 'woo-multistep-checkout') .'</p></div>';
 		} else {
-			echo '<div class="error thwmscf-update-msg"><p>'. __('Your changes were not saved due to an error (or you made none!).', 'woo-multistep-checkout') .'</p></div>';
+			echo '<div class="error thwmscf-update-msg"><p>'. esc_html__('Your changes were not saved due to an error (or you made none!).', 'woo-multistep-checkout') .'</p></div>';
 		}
 	}
 
 	public function render_form_section_separator($props,$section_title='',$atts=array()){
         $section_title_style = isset($section_title) && $section_title === 'hide_top_border' ? 'border: none; padding-top: 3px;' : '';
 		?>
-		<tr valign="top"><td colspan="<?php echo $props['colspan']; ?>" style="height:10px;"></td></tr>
-		<tr valign="top"><td colspan="<?php echo $props['colspan']; ?>" style="<?php echo $section_title_style; ?>" class="thpladmin-form-section-title" ><?php echo $props['title']; ?></td></tr>
-		<tr valign="top"><td colspan="<?php echo $props['colspan']; ?>" style="height:0px;"></td></tr>
+		<tr valign="top"><td colspan="<?php echo esc_attr( $props['colspan'] ); ?>" style="height:10px;"></td></tr>
+		<tr valign="top"><td colspan="<?php echo esc_attr( $props['colspan'] ); ?>" style="<?php echo esc_attr( $section_title_style ); ?>" class="thpladmin-form-section-title" ><?php echo esc_html( $props['title'] ); ?></td></tr>
+		<tr valign="top"><td colspan="<?php echo esc_attr( $props['colspan'] ); ?>" style="height:0px;"></td></tr>
 		<?php
 	}
 
@@ -1978,28 +1978,28 @@ class THWMSCF_Settings {
 		// $reviewed_url= $admin_url . '&thwmsc_reviewed=true&thwmsc_review_nonce=' . wp_create_nonce( 'thwmscf_notice_security');
 		?>
 
-		<div class="notice thwmsc-notice is-dismissible thwmsc-review-wrapper" data-nonce="<?php echo wp_create_nonce( 'thwmscf_notice_security'); ?>">
+		<div class="notice thwmsc-notice is-dismissible thwmsc-review-wrapper" data-nonce="<?php echo esc_attr( wp_create_nonce( 'thwmscf_notice_security') ); ?>">
 			<div class="thwmsc-review-image">
 				<img src="<?php echo esc_url(THWMSCF_URL .'assets/images/review-left.svg'); ?>" alt="themehigh">
 			</div>
 			<div class="thwmsc-review-content">
-				<h3><?php _e('We have a quick favour to ask ', 'woo-multistep-checkout'); ?>&#128519;</h3>
-				<p style="margin-bottom: -11px"><?php _e("We're excited to launch a fresh new look for our Multi-step Checkout plugin! We've put in a lot of time and effort to make your experience better than before.", 'woo-multistep-checkout'); ?></p><p class="thwmsc-review-content-text"><?php _e("If you like it, please show us some love with a ", 'woo-multistep-checkout'); ?><b>5-star </b>rating  &#10084;</p>
+				<h3><?php esc_html_e('We have a quick favour to ask ', 'woo-multistep-checkout'); ?>&#128519;</h3>
+				<p style="margin-bottom: -11px"><?php esc_html_e("We're excited to launch a fresh new look for our Multi-step Checkout plugin! We've put in a lot of time and effort to make your experience better than before.", 'woo-multistep-checkout'); ?></p><p class="thwmsc-review-content-text"><?php esc_html_e("If you like it, please show us some love with a ", 'woo-multistep-checkout'); ?><b>5-star </b>rating  &#10084;</p>
 				<div class="action-row"> 
 			        <a class="thwmsc-notice-action thwmsc-yes" onclick="window.open('https://wordpress.org/support/plugin/woo-multistep-checkout/reviews/', '_blank')" style="margin-right:16px; text-decoration: none; cursor: pointer;">
-			        	<?php _e("Yes, today", 'woo-multistep-checkout'); ?>
+			        	<?php esc_html_e("Yes, today", 'woo-multistep-checkout'); ?>
 			        </a>
 
 			        <a class="thwmsc-notice-action thwmsc-done" href="<?php echo esc_url($reviewed_url); ?>" style="margin-right:16px; text-decoration: none">
-			        	<?php _e('Already, Did', 'woo-multistep-checkout'); ?>
+			        	<?php esc_html_e('Already, Did', 'woo-multistep-checkout'); ?>
 			        </a>
 
 			        <a class="thwmsc-notice-action thwmsc-remind" href="<?php echo esc_url($remind_url); ?>" style="margin-right:16px; text-decoration: none">
-			        	<?php _e('Maybe later', 'woo-multistep-checkout'); ?>
+			        	<?php esc_html_e('Maybe later', 'woo-multistep-checkout'); ?>
 			        </a>
 
 			        <a class="thwmsc-notice-action thwmsc-dismiss" href="<?php echo esc_url($dismiss_url); ?>" style="margin-right:16px; text-decoration: none">
-			        	<?php _e("Nah, Never", 'woo-multistep-checkout'); ?>
+			        	<?php esc_html_e("Nah, Never", 'woo-multistep-checkout'); ?>
 			        </a>
 				</div>
 			</div>
@@ -2031,11 +2031,11 @@ class THWMSCF_Settings {
             <div id="myDIV" class="th_quick_widget">
                 <div class="th_whead">
                     <div class="th_whead_close_btn" onclick="thwmscfwidgetClose()">
-                        <img src="<?php echo THWMSCF_URL.'assets/images/th-icon-cross.svg'; ?>" alt="" class="">
+                        <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/th-icon-cross.svg' ); ?>" alt="" class="">
                     </div>
                     <!-- -----------------------------Widget head icon ----------------------------->
                     <div class="th_whead_icon">
-                        <img src="<?php echo THWMSCF_URL.'assets/images/th-icon-purple.svg'; ?>" alt="" class="">
+                        <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/th-icon-purple.svg' ); ?>" alt="" class="">
                     </div>
                     <!--------------------------Whidget heading section ---------------------------->
                     <div class="th_quick_widget_heading">
@@ -2047,29 +2047,29 @@ class THWMSCF_Settings {
                         <ul>
                             <li>
                                 <div class="list_icon" style="background-color: rgba(199, 0, 255, 0.15);">
-                                    <img src="<?php echo THWMSCF_URL.'assets/images/th-icon-bulb.svg'; ?>" alt="" class="">
+                                    <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/th-icon-bulb.svg' ); ?>" alt="" class="">
                                 </div>
                                 <a href="https://app.loopedin.io/multi-step-checkout-for-woocommerce/ideas" target="_blank" class="quick-widget-doc-link">Request a feature</a>
                             </li>
                             <li>
                                 <div class="list_icon" style="background-color: rgb(30 194 229 / 11%);">
-                                    <img src="<?php echo THWMSCF_URL.'assets/images/upgrade-icon.svg'; ?>" alt="" class="">
+                                    <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/upgrade-icon.svg' ); ?>" alt="" class="">
                                 </div>
                                 <a href="https://www.themehigh.com/product/woocommerce-multi-step-checkout/" target="_blank" class="quick-widget-doc-link">Upgrade to Premium</a>
                             </li>
                             <li>    
                                 <div class="list_icon" style="background-color: rgba(255, 245, 235, 1);">
-                                    <img src="<?php echo THWMSCF_URL.'assets/images/th-icon-join.svg'; ?>" alt="" class="">
+                                    <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/th-icon-join.svg' ); ?>" alt="" class="">
                                 </div><a href="https://www.facebook.com/groups/740534523911091" target="_blank" class="quick-widget-community-link">Join our Community</a>
                             </li>
                             <li>
                                 <div class="list_icon" style="background-color: rgba(238, 240, 255, 1);">
-                                    <img src="<?php echo THWMSCF_URL.'assets/images/th-icon-speaker.svg'; ?>" alt="" class="">
+                                    <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/th-icon-speaker.svg' ); ?>" alt="" class="">
                                 </div><a href="https://wordpress.org/support/plugin/woo-multistep-checkout/" target="_blank" class="quick-widget-support-link">Get support</a>
                             </li>
                             <li>
                                 <div class="list_icon" style="background-color: rgba(255, 0, 0, 0.15);">
-                                    <img src="<?php echo THWMSCF_URL.'assets/images/demo-icon.svg'; ?>" alt="" class="">
+                                    <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/demo-icon.svg' ); ?>" alt="" class="">
                                 </div><a href="https://flydemos.com/wmsc/" target="_blank" class="quick-widget-support-link">Try demo</a>
                             </li>
                         </ul>
@@ -2078,7 +2078,7 @@ class THWMSCF_Settings {
             <div id="myWidget" class="widget-popup" onclick="thwmscfwidgetPopUp()">
                 <span id="th_quick_border_animation"></span>
                 <div class="widget-popup-icon" id="th_arrow_head">
-                    <img src="<?php echo THWMSCF_URL.'assets/images/th-icon-white.svg'; ?>" alt="" class="">
+                    <img src="<?php echo esc_url( THWMSCF_URL.'assets/images/th-icon-white.svg' ); ?>" alt="" class="">
                 </div>
             </div>
             </div>
@@ -2123,7 +2123,7 @@ class THWMSCF_Settings {
 
     public function render_form_field_blank($colspan = 3){
         ?>
-        <td width="<?php echo $colspan * 33.3 ?>%" colspan="<?php echo $colspan; ?>">&nbsp;</td>  
+        <td width="<?php echo esc_attr($colspan * 33.3); ?>%" colspan="<?php echo esc_attr($colspan); ?>">&nbsp;</td>  
         <?php
     }
 

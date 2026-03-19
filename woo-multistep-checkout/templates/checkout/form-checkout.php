@@ -33,7 +33,7 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
-	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) );
+	echo wp_kses_post( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
 	return;
 }
 
@@ -97,10 +97,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         $last_class = isset($last_class) ? $last_class : '';
         ?>	
 		<li class="thwmscf-tab">
-        	<a href="javascript:void(0)" id="step-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="<?php echo $step1_class; echo $last_class;?>">
+        	<a href="javascript:void(0)" id="step-<?php echo esc_attr($step_number); ?>" data-step="<?php echo esc_attr($step_number); ?>" class="<?php echo esc_attr($step1_class); echo esc_attr($last_class);?>">
         		<?php if($thwmscf_layout == 'thwmscf_time_line_step') { ?>
         			<span class="thwmscf-tab-label">
-    					<span class="thwmscf-index thwmscf-tab-icon"><?php echo $step_number; ?></span>
+    					<span class="thwmscf-index thwmscf-tab-icon"><?php echo esc_attr($step_number); ?></span>
     					<?php echo wp_kses_post(__($thwmscf_title_billing, 'woo-multistep-checkout')); ?>
     				</span>
     			<?php } else { 
@@ -118,10 +118,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         	$last_class = isset($last_class) ? $last_class : '';
         	?>
 			<li class="thwmscf-tab">
-	        	<a href="javascript:void(0)" id="step-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="<?php echo $last_class ?>">
+	        	<a href="javascript:void(0)" id="step-<?php echo esc_attr($step_number); ?>" data-step="<?php echo esc_attr($step_number); ?>" class="<?php echo esc_attr($last_class) ?>">
 	        		<?php if($thwmscf_layout == 'thwmscf_time_line_step') { ?>
 	        			<span class="thwmscf-tab-label">
-	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo $step_number; ?></span>
+	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo esc_attr($step_number); ?></span>
 	        				<?php echo wp_kses_post(__($thwmscf_title_shipping, 'woo-multistep-checkout')); ?>
 	        			</span>
 	        		<?php } else {
@@ -133,10 +133,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
     	<?php if(!$order_review_separate && !$order_review_right) { ?>
 			<li class="thwmscf-tab">
-	        	<a href="javascript:void(0)" id="step-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="last">
+	        	<a href="javascript:void(0)" id="step-<?php echo esc_attr($step_number); ?>" data-step="<?php echo esc_attr($step_number); ?>" class="last">
 	        		<?php if($thwmscf_layout == 'thwmscf_time_line_step') { ?>
 	        			<span class="thwmscf-tab-label">
-	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo $step_number; ?></span>
+	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo esc_attr($step_number); ?></span>
 	        				<?php echo wp_kses_post(__($thwmscf_title_order_review, 'woo-multistep-checkout')); ?>
 	        			</span>
 	        		<?php } else {
@@ -148,10 +148,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
     	<?php if($order_review_separate) { ?>
     		<li class="thwmscf-tab">
-	        	<a href="javascript:void(0)" id="step-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>">
+	        	<a href="javascript:void(0)" id="step-<?php echo esc_attr($step_number); ?>" data-step="<?php echo esc_attr($step_number); ?>">
 	        		<?php if($thwmscf_layout == 'thwmscf_time_line_step') { ?>
 	        			<span class="thwmscf-tab-label">
-	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo $step_number; ?></span>
+	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo esc_attr($step_number); ?></span>
 	        				<?php echo wp_kses_post(__($thwmscf_title_order_review, 'woo-multistep-checkout')); ?>
 	        			</span>
 	        		<?php } else {
@@ -163,10 +163,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	        <?php $step_number++; ?>
 
 	        <li class="thwmscf-tab">
-	        	<a href="javascript:void(0)" id="step-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="last">
+	        	<a href="javascript:void(0)" id="step-<?php echo esc_attr( $step_number ); ?>" data-step="<?php echo esc_attr( $step_number ); ?>" class="last">
 	        		<?php if($thwmscf_layout == 'thwmscf_time_line_step') { ?>
 	        			<span class="thwmscf-tab-label">
-	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo $step_number; ?></span>
+	        				<span class="thwmscf-index thwmscf-tab-icon"><?php echo esc_attr( $step_number ); ?></span>
 	        				<?php echo wp_kses_post(__($thwmscf_title_confirm_order, 'woo-multistep-checkout')); ?>
 	        			</span>
 	        		<?php } else {
@@ -205,13 +205,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 				<!--<div class="col2-set" id="customer_details">-->
 					<div class="thwmscf-content">
-						<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="thwmscf-accordion-label <?php echo $step1_class; ?>">
-							<span class="thwmscf-tab-label <?php echo $step1_class; ?>" id="" data-step="<?php echo $step_number; ?>">
+						<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo esc_attr( $step_number ); ?>" data-step="<?php echo esc_attr( $step_number ); ?>" class="thwmscf-accordion-label <?php echo esc_attr( $step1_class ); ?>">
+							<span class="thwmscf-tab-label <?php echo esc_attr( $step1_class ); ?>" id="" data-step="<?php echo esc_attr( $step_number ); ?>">
 								<?php echo wp_kses_post(__($thwmscf_title_billing, 'woo-multistep-checkout')); ?>
 							</span>
 						</a>
 
-						<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo $step_number; ?>">
+						<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo esc_attr( $step_number ); ?>">
 							<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 							<div class="thwscf-billing">
 								<?php do_action( 'woocommerce_checkout_billing' ); ?>
@@ -236,12 +236,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					<?php if(!$billing_shipping_together) { ?>
 
 						<div class="thwmscf-content">
-							<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="thwmscf-accordion-label">
-								<span class="thwmscf-tab-label" id="" data-step="<?php echo $step_number; ?>">					
+							<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo esc_attr( $step_number ); ?>" data-step="<?php echo esc_attr( $step_number ); ?>" class="thwmscf-accordion-label">
+								<span class="thwmscf-tab-label" id="" data-step="<?php echo esc_attr( $step_number ); ?>">					
 									<?php echo wp_kses_post(__($thwmscf_title_shipping, 'woo-multistep-checkout')); ?>
 								</span>
 							</a>
-							<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo $step_number; ?>">
+							<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo esc_attr( $step_number ); ?>">
 								<div class="thwscf-shipping">
 									<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 								</div>
@@ -262,13 +262,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<?php if(!$order_review_separate && !$order_review_right) { ?>
 
 				<div class="thwmscf-content">
-					<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="thwmscf-accordion-label last">
-						<span class="thwmscf-tab-label" id="" data-step="<?php echo $step_number; ?>">					
+					<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo esc_attr( $step_number ); ?>" data-step="<?php echo esc_attr( $step_number ); ?>" class="thwmscf-accordion-label last">
+						<span class="thwmscf-tab-label" id="" data-step="<?php echo esc_attr( $step_number ); ?>">					
 							<?php echo wp_kses_post(__($thwmscf_title_order_review, 'woo-multistep-checkout')); ?>
 						</span>
 					</a>
-					<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo $step_number; ?>">
-						<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
+					<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo esc_attr( $step_number ); ?>">
+						<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 						<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 						<?php do_action( 'thwmscf_woocommerce_checkout_review_order' ); ?>
 
@@ -297,12 +297,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<?php if($order_review_separate && !$order_review_right) { ?>
 
 				<div class="thwmscf-content">
-					<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="thwmscf-accordion-label">
-						<span class="thwmscf-tab-label" id="" data-step="<?php echo $step_number; ?>">					
+					<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo esc_attr( $step_number ); ?>" data-step="<?php echo esc_attr( $step_number ); ?>" class="thwmscf-accordion-label">
+						<span class="thwmscf-tab-label" id="" data-step="<?php echo esc_attr( $step_number ); ?>">					
 							<?php echo wp_kses_post(__($thwmscf_title_order_review, 'woo-multistep-checkout')); ?>
 						</span>
 					</a>
-					<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo $step_number; ?>">
+					<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo esc_attr( $step_number ); ?>">
 						<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 						<?php do_action( 'thwmscf_woocommerce_checkout_review_order' ); ?>
 						<?php //do_action( 'woocommerce_checkout_after_order_review' ); ?>
@@ -313,12 +313,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php $step_number++; ?>
 
 				<div class="thwmscf-content">
-					<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo $step_number; ?>" data-step="<?php echo $step_number; ?>" class="thwmscf-accordion-label last">
-						<span class="thwmscf-tab-label" id="" data-step="<?php echo $step_number; ?>">					
+					<a href="javascript:void(0)" id="thwmscf-accordion-label-<?php echo esc_attr( $step_number ); ?>" data-step="<?php echo esc_attr( $step_number ); ?>" class="thwmscf-accordion-label last">
+						<span class="thwmscf-tab-label" id="" data-step="<?php echo esc_attr( $step_number ); ?>">					
 							<?php echo wp_kses_post(__($thwmscf_title_confirm_order, 'woo-multistep-checkout')); ?>
 						</span>
 					</a>
-					<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo $step_number; ?>">
+					<div class="thwmscf-tab-panel" id="thwmscf-tab-panel-<?php echo esc_attr( $step_number ); ?>">
 
 						<?php 
                             if ( $coupon_form_above_payment == 'yes') {

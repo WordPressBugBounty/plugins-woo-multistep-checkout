@@ -3,9 +3,9 @@ Contributors: ThemeHigh
 Donate link: https://themehigh.com/
 Tags: Multi-step Checkout, Multistep Checkout, WooCommerce Multi-step Checkout, WooCommerce Multistep Checkout, WooCommerce Multistep Checkout Wizard
 Requires at least: 5.3
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 2.3.2
+Stable tag: 2.3.3
 License: GPLv2 or later
 
 MultiStep Checkout for WooCommerce Split up your WooCommerce Checkout form easily into simpler steps.
@@ -188,5 +188,7 @@ Go to Woocommerce > MultiStep Checkout and enable MultiStep Checkout. You can no
 
 == Changelog ==
 
-= 2.3.2 =
-* Added WooCommerce 10.2 compatibility.
+= 2.3.3 =
+* Added WooCommerce 10.6 compatibility.
+* Added WordPress 6.9 compatibility.
+* Improved plugin stability and security.
